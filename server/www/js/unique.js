@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : Omit " + sanitizeHTML(selected_val) + "</dt>");
         }
-        $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + '" value="' + selected_val + '"/>');
-        $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + select_logic_class + '" value="' + select_logic_val + '"/>');
+        $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + '" value="' + sanitizeHTML(selected_val) + '"/>');
+        $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + select_logic_class + '" value="' + sanitizeHTML(select_logic_val) + '"/>');
         $('button#child_' + this_id).click(function (event) {
             event.preventDefault();
             $('select#order_search').find('#child_' + this_id).remove();
@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
         var select_logic_class = 'logic_' + this_id;
         var param = id_to_param_name_mapping[this_id];
         $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : " + sanitizeHTML(selected_val) + "</dt>");
-        $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + '" value="' + selected_val + '"/>');
-        $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + select_logic_class + '" value="' + select_logic_val + '"/>');
+        $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + '" value="' + sanitizeHTML(selected_val) + '"/>');
+        $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + select_logic_class + '" value="' + sanitizeHTML(select_logic_val) + '"/>');
         $('button#child_' + this_id).click(function (event) {
             event.preventDefault();
             $('select#order_search').find('#child_' + this_id).remove();
@@ -95,17 +95,17 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (parseInt(selected1_val) > parseInt(selected_val)) {
             $('input#child_' + this_id1).remove();
             if (select_logic_val == "include") {
-                $('dt#child_' + this_id).text(param + " : " + selected_val + "-" + selected1_val);
+                $('dt#child_' + this_id).text(param + " : " + sanitizeHTML(selected_val) + "-" + sanitizeHTML(selected1_val));
             } else {
-                $('dt#child_' + this_id).text(param + " : Omit " + selected_val + "-" + selected1_val);
+                $('dt#child_' + this_id).text(param + " : Omit " + sanitizeHTML(selected_val) + "-" + sanitizeHTML(selected1_val));
             }
-            $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + 1 + '" value="' + selected1_val + '"/>');
+            $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + 1 + '" value="' + sanitizeHTML(selected1_val) + '"/>');
         } else {
             $('form#speech_search').find('#child_' + this_id).remove();
             $('input#child_' + this_id1).remove();
             $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : " + sanitizeHTML(selected1_val) + "</dt>");
-            $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + '" value="' + selected1_val + '"/>');
-            $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + select_logic_class + '" value="' + select_logic_val + '"/>');
+            $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + '" value="' + sanitizeHTML(selected1_val) + '"/>');
+            $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + select_logic_class + '" value="' + sanitizeHTML(select_logic_val) + '"/>');
             $('button#child_' + this_id).click(function (event) {
                 event.preventDefault();
                 $('select#order_search').find('#child_' + this_id).remove();
@@ -113,11 +113,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 range_count = 0;
             });
             if (select_logic_val == "include") {
-                $('dt#child_' + this_id).text(param + " : " + selected1_val + "-" + selected_val);
+                $('dt#child_' + this_id).text(param + " : " + sanitizeHTML(selected1_val) + "-" + sanitizeHTML(selected_val));
             } else {
-                $('dt#child_' + this_id).text(param + " : Omit " + selected1_val + "-" + selected_val);
+                $('dt#child_' + this_id).text(param + " : Omit " + sanitizeHTML(selected1_val) + "-" + sanitizeHTML(selected_val));
             }
-            $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + 1 + '" value="' + selected_val + '"/>');
+            $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + 1 + '" value="' + sanitizeHTML(selected_val) + '"/>');
         }
     };
 
