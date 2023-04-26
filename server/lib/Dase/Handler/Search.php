@@ -53,6 +53,7 @@ class Dase_Handler_Search
 
         $speech_ids = array_keys($total_found);
         $lines_total = 0;
+        $speech_array = [];
         foreach ($speech_ids as $speech_key)    //populate speech array
         {
             $speeches = new Dase_DBO_Speech($pdo);

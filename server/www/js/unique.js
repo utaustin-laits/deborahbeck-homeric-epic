@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    function sanitizeHTML(text) {
+        var element = document.createElement('div');
+        element.innerText = text;
+        return element.innerHTML;
+    }
+
     var id_to_param_name_mapping = {
         "work": "Work",
         "book_number": "Book Number",
@@ -46,9 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
         var select_logic_class = 'logic_' + this_id;
         var param = id_to_param_name_mapping[this_id];
         if (select_logic_val == "include") {
-            $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : " + selected_val + "</dt>");
+            $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : " + sanitizeHTML(selected_val) + "</dt>");
         } else {
-            $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : Omit " + selected_val + "</dt>");
+            $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : Omit " + sanitizeHTML(selected_val) + "</dt>");
         }
         $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + '" value="' + selected_val + '"/>');
         $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + select_logic_class + '" value="' + select_logic_val + '"/>');
@@ -76,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function end_search_change(this_id, this_id1, select_logic_val, selected_val, selected1_val) {
         var select_logic_class = 'logic_' + this_id;
         var param = id_to_param_name_mapping[this_id];
-        $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : " + selected_val + "</dt>");
+        $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : " + sanitizeHTML(selected_val) + "</dt>");
         $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + '" value="' + selected_val + '"/>');
         $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + select_logic_class + '" value="' + select_logic_val + '"/>');
         $('button#child_' + this_id).click(function (event) {
@@ -97,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             $('form#speech_search').find('#child_' + this_id).remove();
             $('input#child_' + this_id1).remove();
-            $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : " + selected1_val + "</dt>");
+            $('#search_param').append("<button id='child_" + this_id + "' class='icon_remove' style='float:right;'>x</button><dt id='child_" + this_id + "' style='margin-bottom:10px;'>" + param + " : " + sanitizeHTML(selected1_val) + "</dt>");
             $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + this_id + '" value="' + selected1_val + '"/>');
             $('form#speech_search').append('<input id="child_' + this_id + '" type="hidden" name="' + select_logic_class + '" value="' + select_logic_val + '"/>');
             $('button#child_' + this_id).click(function (event) {
