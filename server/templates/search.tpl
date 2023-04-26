@@ -11,6 +11,8 @@
 
 <form action="/search/column" class="navbar-form" method="get" id="speech_search">
         <input type="submit" value="Search" style="position:absolute;top:10px;right:20px;font-size:14px;" class="btn btn-inverse">
+	<div id="hidden_inputs"></div>
+</form>
 <div class="row">
         <div class="span3" id="sel_attr">
         <dl id="data_search">
@@ -56,12 +58,11 @@
 	<div class="span3" id="sel_order">
 	<dl>
 	<div id="search_title" style="font-size:17px;font-weight:bold;margin-bottom: 6px;">Your Selected Parameters:</div>
-	{# <select id="order_search" name="order_search" style="margin-bottom:5px;"><option value="">Order Search By: </option></select> #}
 	<div id="search_param"></div>
 	</dl>
 	</div>
 </div>
-</form>
+
 
 <div class="inline-glossary">
 			<a class="sample">&#x25BC;  Select multiple attributes</a>

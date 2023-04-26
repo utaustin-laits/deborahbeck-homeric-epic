@@ -6,7 +6,7 @@
 <select id="select_logic" class="logic_{{column_name}}" style="margin-bottom:5px;"><option value="include">Include</option><option value="omit">Omit</option></select>
 </div>
 <div>
-<select id="select_val">
+<select id="select_val" onchange="selectVal_onChange(this, '{{column_name}}')">
 <option value="">Select a Value</option>
 {% for key,value in sub %}
 <option id="{{column_name}}" class="{{attr}}" value="{{key}}">{{key}} ({{value}})</option>
@@ -16,7 +16,7 @@
 </div>
 <div style="margin-left:95px;margin-top:5px;margin-bottom:5px;"> to </div>
 <div>
-<select id="select_val1">
+<select id="select_val1" onchange="selectVal1_onChange(this, '{{column_name}}')">
 <option value="">Select a Value</option>
 {% for key,value in sub %}
 <option id="{{column_name}}1" class="{{attr}}" value="{{key}}">{{key}} ({{value}})</option>

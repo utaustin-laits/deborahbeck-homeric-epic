@@ -2,8 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        {% block headmeta %}
-        {% endblock %}
 
         <title>Speech Presentation in Homeric Epic</title>
 
@@ -11,13 +9,6 @@
         <link href="/www/css/bootstrap.css" rel="stylesheet">
         <link href="/www/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="/www/css/local.css" rel="stylesheet">
-
-        {% block headlinks %}{% endblock %}
-
-        {% block headjs %}
-
-        <script src="/www/js/jquery.js"></script>
-        {% endblock %}
 
         {% block head %}{% endblock %}
         <script src="/www/js/script.js"></script>

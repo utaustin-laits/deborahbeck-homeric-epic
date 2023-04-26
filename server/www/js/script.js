@@ -1,30 +1,42 @@
-var Dase = {};
-
-$(document).ready(function() {
-	$('a.sample').click(function(){
-		$(this).next('div.sample-inner').toggle('300');
-		$(this).toggleClass('activecolor');
-	});
-    $('div.sample-inner').hide();
-
-
-	$('#select_attr').change(function (e) {
-		var handler_url = '/search/' + $('#select_attr option:selected').attr('class') + '/count';
-		var find = $('#select_attr option:selected').attr('class');
-		if ($('#' + find).length > 0) {
-		} else {
-			$('select#order_search').append('<option id="' + find + '" value="' + find + '">"' + $('#select_attr option:selected').text() + '"</option>');
-		}
-		$.ajax({
-			type: 'GET',
-			data: {attr: $('#select_attr option:selected').attr('id')},
-			url: handler_url,
-			success: function (hresp) {
-				$('#hresp').html(hresp);
-			},
-			error: function () {
-			}
+document.addEventListener('DOMContentLoaded', function () {
+	var sampleLinks = document.querySelectorAll('a.sample');
+	sampleLinks.forEach(function (sampleLink) {
+		sampleLink.addEventListener('click', function () {
+			var sampleInner = this.nextElementSibling;
+			sampleInner.classList.toggle('sample-inner');
+			sampleInner.style.display = sampleInner.style.display === 'none' ? '' : 'none';
+			this.classList.toggle('activecolor');
 		});
 	});
 
+	var sampleInnerDivs = document.querySelectorAll('div.sample-inner');
+	sampleInnerDivs.forEach(function (sampleInnerDiv) {
+		sampleInnerDiv.style.display = 'none';
+	});
+
+	var selectAttr = document.getElementById('select_attr');
+	if (selectAttr) {
+		selectAttr.addEventListener('change', function (e) {
+			var selectedOption = this.options[this.selectedIndex];
+			var handler_url = '/search/' + selectedOption.getAttribute('class') + '/count?' + new URLSearchParams({
+				attr: selectedOption.getAttribute('id'),
+			});
+
+			fetch(handler_url, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+				.then(function (response) {
+					return response.text();
+				})
+				.then(function (hresp) {
+					document.getElementById('hresp').innerHTML = hresp;
+				})
+				.catch(function (error) {
+					console.error('Error:', error);
+				});
+		});
+	}
 });
