@@ -1,47 +1,30 @@
 var Dase = {};
 
 $(document).ready(function() {
-	Dase.initToggle('target');
-	Dase.initToggleCheck();
-
-    Dase.initToggleSample();         
-    
-    $('div.sample-inner').hide();
-});
-
-
-
-Dase.initToggleCheck = function() {
-	var checked = false;
-	$('#toggle_check').click(function() {
-		if (checked) {
-			$('table#items').find('input[type="checkbox"]').attr('checked',false);
-			checked = false;
-		} else {
-			$('table#items').find('input[type="checkbox"]').attr('checked',true);
-			checked = true;
-		}
-		return false;
+	$('a.sample').click(function(){
+		$(this).next('div.sample-inner').toggle('300');
+		$(this).toggleClass('activecolor');
 	});
-};
+    $('div.sample-inner').hide();
 
 
+	$('#select_attr').change(function (e) {
+		var handler_url = '/search/' + $('#select_attr option:selected').attr('class') + '/count';
+		var find = $('#select_attr option:selected').attr('class');
+		if ($('#' + find).length > 0) {
+		} else {
+			$('select#order_search').append('<option id="' + find + '" value="' + find + '">"' + $('#select_attr option:selected').text() + '"</option>');
+		}
+		$.ajax({
+			type: 'GET',
+			data: {attr: $('#select_attr option:selected').attr('id')},
+			url: handler_url,
+			success: function (hresp) {
+				$('#hresp').html(hresp);
+			},
+			error: function () {
+			}
+		});
+	});
 
-Dase.initToggle = function(id) {
-	$('#'+id).find('a[class="toggle"]').click(function() {
-		var id = $(this).attr('id');
-		var tar = id.replace('toggle','target');
-		$('#'+tar).toggle();
-		return false;
-	});	
-};
-
-
-Dase.initToggleSample = function() {
-	$('div.sample-inner').hide();
-    $('a.sample').click(function(){
-    	$(this).next('div.sample-inner').toggle('300');
-    	$(this).toggleClass('activecolor');
-    });
-};
-
+});

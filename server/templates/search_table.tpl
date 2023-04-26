@@ -134,7 +134,7 @@ Displaying {{((page-1)*max)+1}}-{{total}} of {{total}} Total Speeches
     {% for res in result %}
 	<div class="well">
 		<b>{{loop.index + ((page-1)*max)}}.</b>
-		<div class="view_btn"><a href='/search/display?id={{res[0].speech_id}}&num={{loop.index + ((page-1)*max)}}{{view_link}}' id="display_link" class="btn btn-inverse">View</a></div>
+		<div class="view_btn"><a href='/search/display?total={{total}}&num={{loop.index + ((page-1)*max)}}{{view_link}}' id="display_link" class="btn btn-inverse">View</a></div>
 	<div class="row" style="margin-top:10px;">
 	<div class="span6">
 	{% for ord in order %}
@@ -166,17 +166,16 @@ Displaying {{((page-1)*max)+1}}-{{total}} of {{total}} Total Speeches
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
-	
-	{% for item in res %}
+	</div>
 
+	{% for item in res %}
 		{% if item.attribute=="book_number" %}	
 		<!-- book number is arbitrary.. chosen because there is one book number per speech -->
-			</div>
+
 			<div class="span5"><div><b>Greek Text</b></div>{{speech_array[count]}}</div>
 		{% endif %}
 	{% endfor %}
 	</div>
-		<a href="" class="expand_result" id="{{res[0].speech_id}}" style="font-size:14px;">More</a>
 	</div>
 	{% set count=count+1 %}
     {% endfor %}

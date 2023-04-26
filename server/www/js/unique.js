@@ -39,12 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
     $(document).on('change', '#select_val', function () {
         var selected = $('#select_val option:selected');
         var this_id = selected.attr('id');
-        var param = selected.attr('class');
         // check if the field is already under search paramters
         $('form#speech_search').find('#child_' + this_id).remove();
         var select_logic_val = $('#select_logic').val();
         var selected_val = selected.val();
-        var select_logic_class = $('#select_logic').attr('class');
         begin_search_change(this_id, select_logic_val, selected_val);
     });
 
@@ -68,13 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
     $(document).on('change', '#select_val1', function () {
         var selected = $('#select_val option:selected');
         var this_id = selected.attr('id');
-        var param = selected.attr('class');
         $('form#speech_search').find('#child_' + this_id).remove();
         var selected1 = $('#select_val1 option:selected');
         var this_id1 = selected1.attr('id');
         var select_logic_val = $('#select_logic').val();
         var selected_val = selected.val();
-        var select_logic_class = $('#select_logic').attr('class');
         var selected1_val = selected1.val();
         end_search_change(this_id, this_id1, select_logic_val, selected_val, selected1_val);
     });
@@ -89,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
             $('select#order_search').find('#child_' + this_id).remove();
             $('form#speech_search').find('#child_' + this_id).remove();
-            range_count = 0;
         });
         if (parseInt(selected1_val) == parseInt(selected_val)) {
         } else if (parseInt(selected1_val) > parseInt(selected_val)) {
@@ -110,7 +105,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.preventDefault();
                 $('select#order_search').find('#child_' + this_id).remove();
                 $('form#speech_search').find('#child_' + this_id).remove();
-                range_count = 0;
             });
             if (select_logic_val == "include") {
                 $('dt#child_' + this_id).text(param + " : " + sanitizeHTML(selected1_val) + "-" + sanitizeHTML(selected_val));

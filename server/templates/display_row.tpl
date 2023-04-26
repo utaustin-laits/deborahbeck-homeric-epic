@@ -21,16 +21,8 @@
 <div class="row">
 <table class="span6 table table-bordered table-condensed table-striped" style="margin-top:5px;">
 	<span id="edit_id" class="{{item.id}}"></span>
-	{% for ord in order %}
-		{% for key,value in item %}
-			{% if ord == key %}
-				{% if key == "speech_text" %}
-				{% elseif key == "notes" %}
-				{% else %}
-					<tr><th>{{att_names[ord]}}</th><td>{{value}}</td></tr>
-				{% endif %}
-			{% endif %}
-		{% endfor %} 
+	{% for key in ['work', 'book_number', 'start_verse', 'end_verse', 'length', 'verb_of_speaking', 'verse_number', 'subordinate_clause', 'narrative_level', 'type_of_speech_repr', 'start_verse_of_enclosing', 'end_verse_of_enclosing', 'length_of_enclosing', 'speech_act_type_of_enclosing', 'speech_act_subtype_of_enclosing', 'move_of_enclosing'] %}
+	    <tr><th>{{att_names[key]}}</th><td>{{attribute(item,key)}}</td></tr>
 	{% endfor %}
 </table>
 </div>

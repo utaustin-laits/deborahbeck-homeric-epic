@@ -1,0 +1,7 @@
+{
+    "name": "utaustin-laits/deborahbeck-homeric-epic",
+    "type": "project",
+    "require": {
+        "twig/twig": "^3.5"
+    }
+}

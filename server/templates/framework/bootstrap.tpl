@@ -17,8 +17,6 @@
         {% block headjs %}
 
         <script src="/www/js/jquery.js"></script>
-        <script src="/www/js/jquery-ui.js"></script>
-        <script src="/www/js/bootstrap-dropdown.js"></script>
         {% endblock %}
 
         {% block head %}{% endblock %}
@@ -49,7 +47,7 @@
 
 
                     <div id="brand">
-                    <a class="brand" href="#">Speech Presentation in Homeric Epic</a>
+                    <a class="brand" href="/">Speech Presentation in Homeric Epic</a>
                     </div>
 
                     <div id="links">
@@ -105,7 +103,6 @@
 
             {% endblock %}
         </div> <!-- /container -->
-	<script src="/www/js/homeric.js"></script>
 
     </body>
 </html>
