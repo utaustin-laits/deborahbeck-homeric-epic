@@ -42,6 +42,11 @@
     how the online interface works, and what kinds of searches it is most suited to explore. 
     </p>
     
+    <h2 class="center">Raw Data and Source Code</h2>
+
+    <p class="large_font">The project's raw data is available for download as part of our GitHub repository, at 
+    <a href="https://github.com/utaustin-laits/deborahbeck-homeric-epic">https://github.com/utaustin-laits/deborahbeck-homeric-epic</a></p>
+    
     <h2 class="center">Comments, Questions, Suggestions</h2>
 
     <p class="large_font">Please contact Dr. Deborah Beck at <a href="mailto:database@utlists.utexas.edu">database@utlists.utexas.edu</a></p>
